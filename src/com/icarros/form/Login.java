@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
+import com.icarros.db.conn_db;
 import com.icarros.global.StringsUtils;
 import com.icarros.global.Validador;
 
@@ -93,7 +94,12 @@ public class Login {
 				
 				if(validador.estaValido()) {
 					
-					
+					conn_db connection = new conn_db();
+                    connection.connect();
+                    boolean test = connection.connected();
+                    if (test) {
+                        System.out.println("Conexao com banco bem sucedida !");
+                    }
 					
 				} else {
 					

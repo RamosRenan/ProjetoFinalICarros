@@ -42,4 +42,5 @@ public class StringsUtils {
 	public static final String PRINT_INFO_WHITHIN_FILE = "\t PRINTANDO INFORMAÇÕES DO ARQUIVO \n";
 
 	public static final String ERROR_REQUIRED_FIELDS = "Insira os campos requiridos!";
+	
 }
