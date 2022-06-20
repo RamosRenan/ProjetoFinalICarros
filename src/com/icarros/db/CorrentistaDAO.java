@@ -59,8 +59,20 @@ public class CorrentistaDAO {
 		return correntistas;
 	}
 
-	public void update() {
-	
+	public void update(Correntista correntista) {
+		
+		String script = String.format(QueryUtils.UPDATE_CORRENTISTA
+				, correntista.getNome(), correntista.getEmail(), correntista.getTelefone()
+				, correntista.getSaldo().toString().replace(",", ".")
+				, correntista.getAg(), correntista.getConta());
+		
+		try {
+			
+			con.getStatement().executeLargeUpdate(script);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void delete() {

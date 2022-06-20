@@ -8,4 +8,8 @@ public class QueryUtils {
 	
 	public static final String INSERT_FLUXO_CAIXA = "INSERT INTO correntista.fluxo_caixa VALUES"
 													+ " (%d, %d, %d, %s, %s);";
+	
+	public static final String UPDATE_CORRENTISTA = "UPDATE correntista.correntista"
+													+ " SET nome = '%s', email = '%s', telefone = '%s', saldo = '%s'"
+													+ " WHERE ag = %d AND conta = %d;";
 }
