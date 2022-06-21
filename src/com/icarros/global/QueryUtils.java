@@ -12,4 +12,8 @@ public class QueryUtils {
 	public static final String UPDATE_CORRENTISTA = "UPDATE correntista.correntista"
 													+ " SET nome = '%s', email = '%s', telefone = '%s', saldo = '%s'"
 													+ " WHERE ag = %d AND conta = %d;";
+	
+	public static final String QUERY_CREATE_CORRENTISTA = "INSERT into correntista.correntista (ag, conta, nome, email, telefone, saldo)"
+													+ " values (%d, %d, '%s', '%s', '%s', '%s');";
+													
 }

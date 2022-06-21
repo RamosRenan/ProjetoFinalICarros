@@ -21,8 +21,27 @@ public class CorrentistaDAO {
 		}
 	}
 	
-	public void create() {
+	public void create(Correntista correntista) {
 		
+		String query = "";
+		query = String.format(QueryUtils.QUERY_CREATE_CORRENTISTA, 
+				correntista.getAg(),
+				correntista.getConta(),
+				correntista.getNome(),
+				correntista.getEmail(),
+				correntista.getTelefone(),
+				correntista.getSaldo());
+		System.out.println(query);
+		
+		try {
+
+			con.getStatement().executeUpdate(query);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		
+		}
 	}
 	
 	public ArrayList<Correntista> read(Integer Id) {
