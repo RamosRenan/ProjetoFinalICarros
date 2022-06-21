@@ -15,5 +15,8 @@ public class QueryUtils {
 	
 	public static final String QUERY_CREATE_CORRENTISTA = "INSERT into correntista.correntista (ag, conta, nome, email, telefone, saldo)"
 													+ " values (%d, %d, '%s', '%s', '%s', '%s');";
+	
+	public static final String QUERY_DELETE_CORRENTISTA = "DELETE from correntista.correntista c where "
+													+ " c.ag = %d and c.conta = %d";
 													
 }

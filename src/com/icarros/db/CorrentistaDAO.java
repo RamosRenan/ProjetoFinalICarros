@@ -94,7 +94,25 @@ public class CorrentistaDAO {
 		}
 	}
 
-	public void delete() {
+	public void delete(int ag, int conta) {
+		
+		String query = "";
+		query = String.format(
+				QueryUtils.QUERY_DELETE_CORRENTISTA, 
+				ag,
+				conta);
+
+		System.out.println(query);
+		
+		try {
+
+			con.getStatement().executeLargeUpdate(query);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		
+		}
 	
 	}
 }
