@@ -20,3 +20,9 @@ fluxo int not null,
 entrada decimal(8,2) not null,
 saida decimal(8,2) not null,
 primary key(ag,conta,fluxo));
+
+-- Tabela de Usuario
+create table correntista.usuario(
+username varchar(100) not null,
+senha varchar(255) not null,
+PRIMARY KEY(username, senha));

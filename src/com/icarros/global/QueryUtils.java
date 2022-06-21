@@ -12,4 +12,6 @@ public class QueryUtils {
 	public static final String UPDATE_CORRENTISTA = "UPDATE correntista.correntista"
 													+ " SET nome = '%s', email = '%s', telefone = '%s', saldo = '%s'"
 													+ " WHERE ag = %d AND conta = %d;";
+
+	public static final String QUERY_GET_USUARIO = "SELECT * FROM correntista.usuario WHERE username = '%s' and senha = '%s';";
 }
