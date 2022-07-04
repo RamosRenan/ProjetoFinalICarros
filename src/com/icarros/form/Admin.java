@@ -27,6 +27,7 @@ public class Admin extends JFrame {
 	private JPanel contentPane;
 	private JTable tabela;
 	DefaultTableModel model;
+	CorrentistaDAO correntista = new CorrentistaDAO();
 
 	/**
 	 * Launch the application.
@@ -82,10 +83,10 @@ public class Admin extends JFrame {
 		lblNewLabel.setBounds(190, 35, 379, 40);
 		contentPane.add(lblNewLabel);
 		
+		//Exibindo os valores na tabela
 		JButton btnNewButton = new JButton("Exibir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CorrentistaDAO correntista = new CorrentistaDAO();
 				ArrayList<Correntista> value = correntista.read(null);
 				int n = 0;
 				for(int i = 0; i < value.size(); i++) {	
@@ -98,9 +99,7 @@ public class Admin extends JFrame {
 							atual.getEmail(),
 							atual.getTelefone(),
 							Double.toString(atual.getSaldo())};
-					System.out.println(row);
 					model.addRow(row);
-					System.out.println("add");
 					n++;
 				}
 				if(n < 1){
@@ -111,5 +110,18 @@ public class Admin extends JFrame {
 		});
 		btnNewButton.setBounds(42, 109, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Deletar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = tabela.getSelectedRow();
+				int ag = Integer.parseInt((String) model.getValueAt(row, 0));
+				int conta = Integer.parseInt((String) model.getValueAt(row, 1));
+				correntista.delete(ag, conta);
+				model.removeRow(row);				
+			}
+		});
+		btnNewButton_1.setBounds(42, 151, 89, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }
