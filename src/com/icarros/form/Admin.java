@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -68,15 +69,13 @@ public class Admin extends JFrame {
 				int index = tabela.getSelectedRow();
 			}
 		});
-		model = new DefaultTableModel();
-		tabela.setModel(new DefaultTableModel(
+		model = new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
 					"ag", "conta", "nome", "email", "telefone", "saldo"
-				}
-			));
-		
+				});
+		tabela.setModel(model);
 		JLabel lblNewLabel = new JLabel("Correntistas");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -88,10 +87,11 @@ public class Admin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CorrentistaDAO correntista = new CorrentistaDAO();
 				ArrayList<Correntista> value = correntista.read(null);
+				int n = 0;
 				for(int i = 0; i < value.size(); i++) {	
 					System.out.println(value.get(i));
 					Correntista atual = value.get(i);
-					Object[] row = {
+					Object[] row = new Object[]{
 							Integer.toString(atual.getAg()),
 							Integer.toString(atual.getConta()),
 							atual.getNome(),
@@ -101,6 +101,11 @@ public class Admin extends JFrame {
 					System.out.println(row);
 					model.addRow(row);
 					System.out.println("add");
+					n++;
+				}
+				if(n < 1){
+					JOptionPane.showMessageDialog(null, "Nao existem registros!","Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
