@@ -87,6 +87,7 @@ public class Admin extends JFrame {
 		JButton btnNewButton = new JButton("Exibir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				model.setRowCount(0);
 				ArrayList<Correntista> value = correntista.read(null);
 				int n = 0;
 				for(int i = 0; i < value.size(); i++) {	
@@ -108,7 +109,7 @@ public class Admin extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(42, 109, 89, 23);
+		btnNewButton.setBounds(42, 55, 89, 52);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Deletar");
@@ -121,7 +122,32 @@ public class Admin extends JFrame {
 				model.removeRow(row);				
 			}
 		});
-		btnNewButton_1.setBounds(42, 151, 89, 23);
+		btnNewButton_1.setBounds(42, 162, 89, 52);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Atualizar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = tabela.getSelectedRow();
+				int ag = Integer.parseInt((String) model.getValueAt(row, 0));
+				int conta = Integer.parseInt((String) model.getValueAt(row, 1));
+				Correntista correntista_update = new Correntista();
+				correntista_update.setAg(ag);
+				correntista_update.setConta(conta);
+				UpdateForm updateForm = new UpdateForm(correntista_update);
+				updateForm.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(42, 269, 89, 52);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Inserir");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//CreateForm createForm = new CreateForm();
+			}
+		});
+		btnNewButton_3.setBounds(42, 376, 89, 52);
+		contentPane.add(btnNewButton_3);
 	}
 }
