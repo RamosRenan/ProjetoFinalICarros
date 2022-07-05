@@ -147,11 +147,20 @@ public class Admin extends JFrame {
 				}
 				int ag = Integer.parseInt((String) model.getValueAt(row, 0));
 				int conta = Integer.parseInt((String) model.getValueAt(row, 1));
+				String nome = (String) model.getValueAt(row, 2);
+				String email = (String) model.getValueAt(row, 3);
+				String telefone = (String) model.getValueAt(row, 4);
+				Double saldo = Double.parseDouble((String) model.getValueAt(row, 5));
 				Correntista correntista_update = new Correntista();
 				correntista_update.setAg(ag);
 				correntista_update.setConta(conta);
+				correntista_update.setNome(nome);
+				correntista_update.setEmail(email);
+				correntista_update.setTelefone(telefone);
+				correntista_update.setSaldo(saldo);
 				UpdateForm updateForm = new UpdateForm(correntista_update);
 				updateForm.setVisible(true);
+				
 			}
 		});
 		btnNewButton_2.setBounds(42, 269, 89, 52);

@@ -90,13 +90,21 @@ public class UpdateForm extends JFrame {
 		JButton btnNewButton = new JButton("Atualizar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!nome.getText().isBlank() && !nome.getText().isEmpty()) {
 				correntista_update.setNome(nome.getText());
+				}
+				if(!email.getText().isBlank() && !email.getText().isEmpty()) {
 				correntista_update.setEmail(email.getText());
+				}
+				if(!telefone.getText().isBlank() && !telefone.getText().isEmpty()){
 				correntista_update.setTelefone(telefone.getText());
+				}
+				if(!saldo.getText().isBlank() && !saldo.getText().isEmpty()) {
 				correntista_update.setSaldo(Double.parseDouble(saldo.getText()));
+				}
 				correntista.update(correntista_update);
 				JOptionPane.showMessageDialog(null, "Correntista atualizado!");
-				setVisible(false);				
+				setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(148, 173, 137, 53);
