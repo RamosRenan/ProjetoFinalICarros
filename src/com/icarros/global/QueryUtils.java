@@ -18,5 +18,6 @@ public class QueryUtils {
 	
 	public static final String QUERY_DELETE_CORRENTISTA = "DELETE from correntista.correntista c where "
 													+ " c.ag = %d and c.conta = %d";
-								public static final String QUERY_GET_USUARIO = "SELECT * FROM correntista.usuario WHERE username = '%s' and senha = '%s';";
+	
+	public static final String QUERY_GET_USUARIO = "SELECT * FROM correntista.usuario WHERE username = '%s' and senha = '%s';";
 }

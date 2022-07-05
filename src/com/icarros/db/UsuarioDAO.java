@@ -23,10 +23,9 @@ public class UsuarioDAO {
 	
 	public boolean verificaUser(Usuario usuario) {
 		
-		String query = String.format(QueryUtils.QUERY_GET_USUARIO, usuario.getUsername(), usuario.getSenha());
+		String senhaCripto = Encrypter.encrypt(usuario.getSenha());
+		String query = String.format(QueryUtils.QUERY_GET_USUARIO, usuario.getUsername(), senhaCripto);
 		boolean existe = false;
-		
-		System.out.println(query);
 		
 		try {
 		

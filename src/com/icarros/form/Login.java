@@ -11,7 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.icarros.db.conn_db;
+import com.icarros.Usuario;
+import com.icarros.db.UsuarioDAO;
 import com.icarros.global.StringsUtils;
 import com.icarros.global.Validador;
 
@@ -86,24 +87,38 @@ public class Login {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String user = txtUsuario.getText();
+				String username = txtUsuario.getText();
 				String password = txtSenha.getText();
 				
 				Validador validador = new Validador();
-				validador.loginRequired(user, password);
+				validador.loginRequired(username, password);
 				
 				if(validador.estaValido()) {
 					
-					conn_db connection = new conn_db();
-                    connection.connect();
-                    boolean test = connection.connected();
-                    if (test) {
-                        System.out.println("Conexao com banco bem sucedida !");
-                    }
+					UsuarioDAO userDAO = new UsuarioDAO();
+					Usuario usuario = new Usuario();
+					usuario.setUsername(username);
+					usuario.setSenha(password);
+					
+					Boolean userExiste = userDAO.verificaUser(usuario);
+					
+					if (userExiste) {
+						
+						Admin adminForm = new Admin();
+						adminForm.setVisible(true);
+						userDAO.close();
+						frame.dispose();
+						
+					} else {
+						
+						JOptionPane.showMessageDialog(null, StringsUtils.ERROR_USER_NOT_FOUND);
+						txtUsuario.requestFocusInWindow();
+					}
 					
 				} else {
 					
 					JOptionPane.showMessageDialog(null, StringsUtils.ERROR_REQUIRED_FIELDS);
+					txtUsuario.requestFocusInWindow();
 				}
 			}
 		});
