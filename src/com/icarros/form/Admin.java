@@ -116,6 +116,14 @@ public class Admin extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = tabela.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(
+							null, 
+							"Nao existem registros ou nenhum foi selecionado!",
+							"Error",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				int ag = Integer.parseInt((String) model.getValueAt(row, 0));
 				int conta = Integer.parseInt((String) model.getValueAt(row, 1));
 				correntista.delete(ag, conta);
@@ -129,6 +137,14 @@ public class Admin extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = tabela.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(
+							null, 
+							"Nao existem registros ou nenhum foi selecionado!",
+							"Error",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				int ag = Integer.parseInt((String) model.getValueAt(row, 0));
 				int conta = Integer.parseInt((String) model.getValueAt(row, 1));
 				Correntista correntista_update = new Correntista();
