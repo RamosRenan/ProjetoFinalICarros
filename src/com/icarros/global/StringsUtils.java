@@ -43,4 +43,5 @@ public class StringsUtils {
 
 	public static final String ERROR_REQUIRED_FIELDS = "Insira os campos requiridos!";
 	
+	public static final String ERROR_USER_NOT_FOUND = "Usuário não encontrado!";
 }
